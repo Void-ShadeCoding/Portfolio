@@ -5,16 +5,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("expandedImg");
     
+    const closeModal = () => {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+    };
+
     document.querySelectorAll('.project-thumb img').forEach(img => {
         img.addEventListener('click', (e) => {
             e.stopPropagation();
             modal.style.display = "flex";
             modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            document.body.style.overflow = "hidden";
         });
     });
 
-    modal.addEventListener('click', () => {
-        modal.style.display = "none";
+    modal.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape" && modal.style.display === "flex") {
+            closeModal();
+        }
     });
 
     const cards = document.querySelectorAll('.project-card');
