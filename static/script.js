@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearSpan = document.getElementById('year');
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("expandedImg");
+    
+    document.querySelectorAll('.project-thumb img').forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+        });
+    });
+
+    modal.addEventListener('click', () => {
+        modal.style.display = "none";
+    });
+
     const cards = document.querySelectorAll('.project-card');
     cards.forEach(card => {
         card.addEventListener('click', (e) => {
@@ -44,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const revealElements = document.querySelectorAll('.reveal');
-    
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -52,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
 
     revealElements.forEach(el => revealObserver.observe(el));
 });
