@@ -380,7 +380,6 @@ footer {
     padding-left: 30px;
 }
 
-/* The vertical line */
 .timeline::before {
     content: '';
     position: absolute;
@@ -437,7 +436,6 @@ footer {
     transform: translateY(0);
 }
 
-/* Project Card Hover Animation */
 .project-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -448,7 +446,6 @@ footer {
     border-color: var(--highlight);
 }
 
-/* Hero Text Animation */
 .hero-content h1 {
     animation: fadeInSlide 1s ease-forward;
 }
