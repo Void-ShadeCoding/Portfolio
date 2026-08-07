@@ -165,7 +165,7 @@ nav {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 380px;
+    height: 380px;
 }
 
 .project-card:hover {
@@ -213,11 +213,22 @@ nav {
     font-size: 1.3rem;
 }
 
+.card-header h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .project-card .short-desc {
     color: var(--dim-text);
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
     flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .tags {
@@ -244,9 +255,14 @@ nav {
 
 .project-card.active {
     grid-column: 1 / -1;
-    min-height: auto;
+    height: auto;
     border-color: var(--accent);
     cursor: default;
+}
+
+.project-card.active .short-desc,
+.project-card.active .card-header h3 {
+    -webkit-line-clamp: unset;
 }
 
 .project-card.active .expanded-content {
